@@ -5,7 +5,8 @@
     "target": "es6",
     "jsx": "preserve",
     "lib": [
-      "dom"
+      "dom",
+      "esnext"
     ],
     "noEmit": true,
     "skipLibCheck": true,
@@ -19,7 +20,7 @@
     "isolatedModules": true
   },
   "include": [
-    "pages/**/*",
+    "src/pages/**/*",
     "next-env.d.ts"
   ],
   "exclude": [
