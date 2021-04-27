@@ -40,15 +40,17 @@
     ],
     "react/jsx-filename-extension": [
       "error",
-      { "extensions": [".tsx"] }
+      {
+        "extensions": [".tsx"]
+      }
     ],
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
+    "arrow-body-style": "off",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-explicit-any": "off",
     "react/jsx-props-no-spreading": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "arrow-body-style": "off"
+    "@typescript-eslint/no-use-before-define": "error",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }
