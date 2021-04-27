@@ -4,9 +4,9 @@ import { Box } from "@material-ui/core";
 import { createMuiTheme } from "@material-ui/core/styles";
 import React from "react";
 import styles from "../styles/Home.module.css";
-import Layout from "../components/Layout";
-import TaskRegisterForm from "../components/TaskRegisterForm";
-import TaskList from "../components/TaskList";
+import Layout from "../components/templates/Layout";
+import TaskRegisterForm from "../components/atoms/TaskRegisterForm/TaskRegisterForm";
+import TaskList from "../components/organisms/TaskList/TaskList";
 
 const theme = createMuiTheme({
   palette: {

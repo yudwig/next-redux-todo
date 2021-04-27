@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import MiniVariantDrawer from "./MiniVariantDrawer";
+import MiniVariantDrawer from "../MiniVariantDrawer/MiniVariantDrawer";
 
 interface Props {
   title: string;
