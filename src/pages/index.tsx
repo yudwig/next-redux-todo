@@ -1,7 +1,5 @@
 import Head from "next/head";
-import {
-  Box,
-} from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import React from "react";
@@ -38,11 +36,11 @@ const Index: React.FC = () => {
           <Box pl={3} mb={3}>
             <TaskRegisterForm />
           </Box>
-           <TaskList />
+          <TaskList />
         </Box>
       </main>
     </Layout>
   );
-}
+};
 
 export default Index;

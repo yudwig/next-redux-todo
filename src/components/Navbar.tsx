@@ -1,25 +1,27 @@
 import * as React from "react";
-import {useState} from "react";
+import { useState } from "react";
 import {
-  AppBar, Box,
+  AppBar,
+  Box,
   IconButton,
-  Toolbar, Typography
+  Toolbar,
+  Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import MiniVariantDrawer from "./MiniVariantDrawer";
 
 interface Props {
-  title: string
+  title: string;
 }
 
-const Navbar: React.FC<Props> = ({title}) => {
+const Navbar: React.FC<Props> = ({ title }) => {
   const [isOpenSidebar, setSidebarState] = useState(false);
   const openSidebar = () => {
     setSidebarState(true);
-  }
+  };
   const closeSidebar = () => {
     setSidebarState(false);
-  }
+  };
   return (
     <AppBar position="static" color="primary">
       <Toolbar>
@@ -35,6 +37,6 @@ const Navbar: React.FC<Props> = ({title}) => {
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default Navbar;

@@ -1,5 +1,10 @@
 import * as React from "react";
-import {Box, Checkbox, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import {
+  Checkbox,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@material-ui/core";
 
 const TaskList: React.FC = () => {
   return (
@@ -12,6 +17,6 @@ const TaskList: React.FC = () => {
       </ListItem>
     </>
   );
-}
+};
 
 export default TaskList;
