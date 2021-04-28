@@ -26,7 +26,7 @@
     "ecmaVersion": 2021,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "unused-imports"],
   "rules": {
     "import/extensions": [
       "error",
@@ -49,15 +49,17 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
-    "@typescript-eslint/no-use-before-define": "error",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
         "devDependencies": ["**/*.stories.tsx"],
         "peerDependencies": false
       }
-    ]
+    ],
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports-ts": "warn",
+    "@typescript-eslint/no-use-before-define": "error",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }
