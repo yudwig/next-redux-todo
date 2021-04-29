@@ -49,6 +49,7 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/destructuring-assignment": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {

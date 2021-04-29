@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Navbar from "../molecules/Navbar/Navbar";
+import Navigation from "../organisms/Navigation/Navigation";
 
 const Layout: React.FC = ({ children }) => {
   return (
@@ -11,7 +11,7 @@ const Layout: React.FC = ({ children }) => {
         <title>layout</title>
       </Head>
       <header>
-        <Navbar title="Todo List" />
+        <Navigation />
       </header>
       <main>{children}</main>
     </div>
