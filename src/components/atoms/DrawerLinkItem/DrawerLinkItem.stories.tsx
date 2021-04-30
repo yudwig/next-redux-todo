@@ -2,7 +2,7 @@ import { Meta, Story } from "@storybook/react";
 import DrawerLinkItem from "./DrawerLinkItem";
 
 export default {
-  title: "DrawerLinkItem",
+  title: "atoms/DrawerLinkItem",
   component: DrawerLinkItem,
   argTypes: {
     text: {

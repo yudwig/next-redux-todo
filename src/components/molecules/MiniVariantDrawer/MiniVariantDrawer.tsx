@@ -4,7 +4,7 @@ import { Drawer, DrawerProps } from "@material-ui/core";
 const MiniVariantDrawer: React.FC<DrawerProps> = ({ children, ...props }) => {
   return (
     <Drawer {...props}>
-      <span>Mini Variant Drawer</span>
+      <span>Mini Variant Drawer. aaaa</span>
       {children}
     </Drawer>
   );

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { ListItem, ListItemText } from "@material-ui/core";
 
 interface Props {
   text: string;
@@ -10,7 +10,6 @@ interface Props {
 const DrawerLinkItem: React.FC<Props> = (props) => {
   return (
     <ListItem button key={props.text}>
-      <ListItemIcon />
       <ListItemText primary={props.text} />
     </ListItem>
   );
