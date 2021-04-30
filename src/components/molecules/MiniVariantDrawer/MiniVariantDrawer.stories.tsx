@@ -18,13 +18,15 @@ export default {
 
 const Template: Story = (args) => {
   return (
-    <MiniVariantDrawer {...args}>
-      <List>
-        <DrawerLinkItem text="test" icon="icon" uri="uri" />
-        <DrawerLinkItem text="test" icon="icon" uri="uri" />
-        <DrawerLinkItem text="test" icon="icon" uri="uri" />
-      </List>
-    </MiniVariantDrawer>
+    <>
+      <MiniVariantDrawer {...args}>
+        <List>
+          <DrawerLinkItem text="test" icon="icon" uri="uri" />
+          <DrawerLinkItem text="test" icon="icon" uri="uri" />
+          <DrawerLinkItem text="test" icon="icon" uri="uri" />
+        </List>
+      </MiniVariantDrawer>
+    </>
   );
 };
 

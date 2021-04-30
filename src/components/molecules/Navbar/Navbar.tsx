@@ -10,7 +10,7 @@ interface Props {
 
 const Navbar: React.FC<Props> = (props) => {
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="sticky" color="primary">
       <Toolbar>
         <HamburgerButton onClick={props.onToggleDrawer} />
         <Box pl={1}>

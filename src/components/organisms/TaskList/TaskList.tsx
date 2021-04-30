@@ -9,7 +9,9 @@ const TaskList: React.FC = () => {
     { title: "this is todo 3." },
   ];
 
-  const taskList = tasks.map((task) => <TaskListItem title={task.title} />);
+  const taskList = tasks.map((task, index) => (
+    <TaskListItem key={task.title} title={task.title} />
+  ));
 
   return <div>{taskList}</div>;
 };

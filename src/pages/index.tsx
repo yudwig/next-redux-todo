@@ -4,7 +4,7 @@ import { Box } from "@material-ui/core";
 import { createMuiTheme } from "@material-ui/core/styles";
 import React from "react";
 import styles from "../styles/Home.module.css";
-import Layout from "../components/templates/Layout";
+import WithNavigationLayout from "../components/templates/WithNavigationLayout";
 import TaskRegisterForm from "../components/atoms/TaskRegisterForm/TaskRegisterForm";
 import TaskList from "../components/organisms/TaskList/TaskList";
 
@@ -27,7 +27,7 @@ const theme = createMuiTheme({
 
 const Index: React.FC = () => {
   return (
-    <Layout>
+    <WithNavigationLayout>
       <Head>
         <title>Todo List</title>
       </Head>
@@ -39,7 +39,7 @@ const Index: React.FC = () => {
           <TaskList />
         </Box>
       </main>
-    </Layout>
+    </WithNavigationLayout>
   );
 };
 

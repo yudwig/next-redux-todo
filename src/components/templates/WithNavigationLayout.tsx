@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Navigation from "../organisms/Navigation/Navigation";
 
-const Layout: React.FC = ({ children }) => {
+const WithNavigationLayout: React.FC = ({ children }) => {
   return (
     <div>
       <Head>
@@ -10,12 +10,9 @@ const Layout: React.FC = ({ children }) => {
         <link rel="icon" href="favicon.ico" />
         <title>layout</title>
       </Head>
-      <header>
-        <Navigation />
-      </header>
-      <main>{children}</main>
+      <Navigation>{children}</Navigation>
     </div>
   );
 };
 
-export default Layout;
+export default WithNavigationLayout;
