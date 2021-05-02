@@ -11,10 +11,26 @@ export default {
         type: "text",
       },
     },
+    status: {
+      control: {
+        type: "boolean",
+      },
+    },
   },
 } as Meta;
 
-// const Template: Story = ({ ...args }) => <TaskListItem {...args} />;
-const Template: Story = ({ title }) => <TaskListItem title={title} />;
+const Template: Story = (args) => (
+  <TaskListItem title={args.title} status={args.status} />
+);
 
-export const index = Template;
+export const Active = Template.bind({});
+Active.args = {
+  title: "Active Task",
+  status: false,
+};
+
+export const Done = Template.bind({});
+Done.args = {
+  title: "Done Task",
+  status: true,
+};
