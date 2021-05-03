@@ -1,8 +1,13 @@
 import * as React from "react";
 import { TextField } from "@material-ui/core";
+import styled from "styled-components";
+
+const Field = styled(TextField)`
+  padding-left: 0;
+`;
 
 const TaskRegisterForm: React.FC = () => {
-  return <TextField label="Todo" fullWidth />;
+  return <Field label="Todo" fullWidth />;
 };
 
 export default TaskRegisterForm;
