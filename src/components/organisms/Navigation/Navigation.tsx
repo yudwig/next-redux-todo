@@ -35,7 +35,9 @@ const Navigation: React.FC<Props> = (props) => {
           <DrawerLinkList />
         </MiniVariantDrawer>
         <Content>
-          <Container maxWidth="sm">{props.children}</Container>
+          <Container maxWidth="sm">
+            <Box>{props.children}</Box>
+          </Container>
         </Content>
       </Box>
     </>
