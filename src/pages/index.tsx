@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { Box } from "@material-ui/core";
 
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -26,18 +25,11 @@ const theme = createMuiTheme({
 
 const Index: React.FC = () => {
   return (
-    <WithNavigationLayout>
-      <Head>
-        <title>Todo List</title>
-      </Head>
-      <main>
-        <Box>
-          <Box pl={3} mb={3}>
-            <TaskRegisterForm />
-          </Box>
-          <TaskList />
-        </Box>
-      </main>
+    <WithNavigationLayout pageTitle="Todo List">
+      <Box pl={3} mb={3}>
+        <TaskRegisterForm />
+      </Box>
+      <TaskList />
     </WithNavigationLayout>
   );
 };
