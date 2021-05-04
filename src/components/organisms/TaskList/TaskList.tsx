@@ -10,7 +10,7 @@ const TaskList: React.FC = () => {
   ];
 
   const taskList = tasks.map((task, index) => (
-    <TaskListItem key={task.title} title={task.title} />
+    <TaskListItem key={task.title} title={task.title} status={false} />
   ));
 
   return <div>{taskList}</div>;
