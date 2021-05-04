@@ -1,8 +1,27 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
+import React, { useEffect } from "react";
+import { AppProps } from "next/app";
+import { StylesProvider } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
+// import theme from "./components/theme";
 
-export default function App({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+  useEffect(() => {
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles && jssStyles.parentElement) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
-    <Component {...pageProps} />
+    <StylesProvider injectFirst>
+      {/* <MaterialUIThemeProvider theme={theme}> */}
+      {/*  <StyledComponentsThemeProvider theme={theme}> */}
+      <CssBaseline />
+      <Component {...pageProps} />
+      {/* </StyledComponentsThemeProvider> */}
+      {/* </MaterialUIThemeProvider> */}
+    </StylesProvider>
   );
-}
+};
+
+export default MyApp;

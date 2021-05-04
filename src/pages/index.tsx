@@ -3,7 +3,6 @@ import { Box } from "@material-ui/core";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import React from "react";
-import styles from "../styles/Home.module.css";
 import WithNavigationLayout from "../components/templates/WithNavigationLayout";
 import TaskRegisterForm from "../components/atoms/TaskRegisterForm/TaskRegisterForm";
 import TaskList from "../components/organisms/TaskList/TaskList";
@@ -31,7 +30,7 @@ const Index: React.FC = () => {
       <Head>
         <title>Todo List</title>
       </Head>
-      <main className={styles.main}>
+      <main>
         <Box>
           <Box pl={3} mb={3}>
             <TaskRegisterForm />
