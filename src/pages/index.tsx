@@ -1,7 +1,6 @@
-import { Box } from "@material-ui/core";
-
 import { createMuiTheme } from "@material-ui/core/styles";
 import React from "react";
+import { Box } from "@material-ui/core";
 import WithNavigationLayout from "../components/templates/WithNavigationLayout";
 import TaskRegisterForm from "../components/atoms/TaskRegisterForm/TaskRegisterForm";
 import TaskList from "../components/organisms/TaskList/TaskList";
@@ -26,7 +25,7 @@ const theme = createMuiTheme({
 const Index: React.FC = () => {
   return (
     <WithNavigationLayout pageTitle="Todo List">
-      <Box pl={3} mb={3}>
+      <Box pb={2}>
         <TaskRegisterForm />
       </Box>
       <TaskList />

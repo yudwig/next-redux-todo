@@ -3,7 +3,7 @@ import { TextField } from "@material-ui/core";
 import styled from "styled-components";
 
 const Field = styled(TextField)`
-  padding-left: 0;
+  margin-left: 0;
 `;
 
 const TaskRegisterForm: React.FC = () => {
