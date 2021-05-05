@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { AppProps } from "next/app";
-import { StylesProvider } from "@material-ui/core";
+import { MuiThemeProvider, StylesProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-// import theme from "./components/theme";
+import { ThemeProvider } from "styled-components";
+import theme from "../configs/theme";
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   useEffect(() => {
@@ -14,12 +15,12 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 
   return (
     <StylesProvider injectFirst>
-      {/* <MaterialUIThemeProvider theme={theme}> */}
-      {/*  <StyledComponentsThemeProvider theme={theme}> */}
-      <CssBaseline />
-      <Component {...pageProps} />
-      {/* </StyledComponentsThemeProvider> */}
-      {/* </MaterialUIThemeProvider> */}
+      <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </MuiThemeProvider>
     </StylesProvider>
   );
 };
