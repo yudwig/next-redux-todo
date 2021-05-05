@@ -1,9 +1,9 @@
 import { Meta, Story } from "@storybook/react";
-import TaskStatusToggler from "./TaskStatusToggler";
+import TaskStatusIndicator from "./TaskStatusIndicator";
 
 export default {
-  title: "atoms/TaskStatusToggler",
-  component: TaskStatusToggler,
+  title: "atoms/TaskStatusIndicator",
+  component: TaskStatusIndicator,
   argTypes: {
     status: {
       control: {
@@ -13,7 +13,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story = (args) => <TaskStatusToggler status={args.status} />;
+const Template: Story = (args) => <TaskStatusIndicator status={args.status} />;
 export const Active = Template.bind({});
 Active.args = {
   status: false,
