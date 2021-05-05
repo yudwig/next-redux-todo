@@ -7,7 +7,6 @@ import Navbar from "../../molecules/Navbar/Navbar";
 import DrawerLinkList from "../DrawerLinkList/DrawerLinkList";
 
 const Content = styled.main`
-  padding: 50px;
   width: 100%;
 `;
 

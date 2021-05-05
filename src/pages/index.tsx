@@ -8,7 +8,7 @@ const Index: React.FC = () => {
   return (
     <WithNavigationLayout pageTitle="Todo List">
       <Container maxWidth="md">
-        <Box mb={4} mt={2}>
+        <Box mb={4} mt={8}>
           <TaskRegisterForm />
         </Box>
         <TaskList />
