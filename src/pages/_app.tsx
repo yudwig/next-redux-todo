@@ -3,7 +3,9 @@ import { AppProps } from "next/app";
 import { MuiThemeProvider, StylesProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "styled-components";
+import { Provider } from "react-redux";
 import theme from "../configs/theme";
+import initStore from "../states/store";
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   useEffect(() => {
@@ -17,8 +19,10 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Component {...pageProps} />
+          <Provider store={initStore()}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </Provider>
         </ThemeProvider>
       </MuiThemeProvider>
     </StylesProvider>

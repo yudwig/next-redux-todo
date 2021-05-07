@@ -1,3 +1,4 @@
+import { combineReducers } from "redux";
 import types from "./types";
 
 const tasks = (state: any, action: any) => {
@@ -9,4 +10,8 @@ const tasks = (state: any, action: any) => {
   }
 };
 
-export default tasks;
+const tasksReducer = combineReducers({
+  tasks,
+});
+
+export default tasksReducer;
