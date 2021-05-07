@@ -6,8 +6,16 @@ const Field = styled(TextField)`
   margin-left: 0;
 `;
 
-const TaskRegisterForm: React.FC = () => {
-  return <Field label="Todo" fullWidth />;
+interface Props {
+  onSubmit: (e: any) => void;
+}
+
+const TaskRegisterForm: React.FC<Props> = (props) => {
+  return (
+    <form noValidate autoComplete="off" onSubmit={props.onSubmit}>
+      <Field label="Todo" fullWidth autoFocus />
+    </form>
+  );
 };
 
 export default TaskRegisterForm;

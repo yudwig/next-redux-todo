@@ -6,6 +6,6 @@ export default {
   component: Navigation,
 } as Meta;
 
-const Template: Story = () => <Navigation />;
+const Template: Story = () => <Navigation title="Todo List" />;
 
 export const index = Template;
