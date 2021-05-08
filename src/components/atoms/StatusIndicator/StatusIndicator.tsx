@@ -11,7 +11,7 @@ const Button = styled(IconButton)`
   margin-left: 9px;
 `;
 
-const TaskStatusIndicator: React.FC<Props> = (props) => {
+const StatusIndicator: React.FC<Props> = (props) => {
   return (
     <Button>
       <Checkbox checked={props.status} />
@@ -19,4 +19,4 @@ const TaskStatusIndicator: React.FC<Props> = (props) => {
   );
 };
 
-export default TaskStatusIndicator;
+export default StatusIndicator;

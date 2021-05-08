@@ -5,7 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import theme from "../configs/theme";
-import initStore from "../states/store";
+import configureStore from "../states/store";
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   useEffect(() => {
@@ -19,7 +19,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
-          <Provider store={initStore()}>
+          <Provider store={configureStore()}>
             <CssBaseline />
             <Component {...pageProps} />
           </Provider>

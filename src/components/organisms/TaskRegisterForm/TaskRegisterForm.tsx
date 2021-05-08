@@ -1,11 +1,6 @@
 import * as React from "react";
-import { TextField } from "@material-ui/core";
-import styled from "styled-components";
 import { FormEvent, useRef, KeyboardEvent } from "react";
-
-const Field = styled(TextField)`
-  margin-left: 0;
-`;
+import TextInput from "../../atoms/TextInput/TextInput";
 
 interface Props {
   onSubmit: (text: string) => void;
@@ -38,7 +33,7 @@ const TaskRegisterForm: React.FC<Props> = (props) => {
 
   return (
     <form noValidate autoComplete="off" onSubmit={submit}>
-      <Field
+      <TextInput
         label="Todo"
         fullWidth
         autoFocus

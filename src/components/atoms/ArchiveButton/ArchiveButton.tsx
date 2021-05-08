@@ -7,7 +7,7 @@ const Button = styled(IconButton)`
   padding: 9px;
 `;
 
-const TaskArchiveButton: React.FC = () => {
+const ArchiveButton: React.FC = () => {
   return (
     <Button aria-label="delete">
       <DeleteOutlineIcon />
@@ -15,4 +15,4 @@ const TaskArchiveButton: React.FC = () => {
   );
 };
 
-export default TaskArchiveButton;
+export default ArchiveButton;

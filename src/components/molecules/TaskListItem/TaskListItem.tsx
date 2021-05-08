@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Box, FormControlLabel, ListItem } from "@material-ui/core";
 import styled from "styled-components";
-import TaskStatusIndicator from "../../atoms/TaskStatusIndicator/TaskStatusIndicator";
-import TaskArchiveButton from "../../atoms/TaskArchiveButton/TaskArchiveButton";
+import StatusIndicator from "../../atoms/StatusIndicator/StatusIndicator";
+import ArchiveButton from "../../atoms/ArchiveButton/ArchiveButton";
 
 const Flex = styled(Box)`
   display: flex;
@@ -25,11 +25,11 @@ const TaskListItem: React.FC<Props> = (props) => {
     <Item>
       <Flex justifyContent="space-between" width="100%">
         <FormControlLabel
-          control={<TaskStatusIndicator status={props.status} />}
+          control={<StatusIndicator status={props.status} />}
           label={props.title}
         />
         <Flex>
-          <TaskArchiveButton />
+          <ArchiveButton />
         </Flex>
       </Flex>
     </Item>

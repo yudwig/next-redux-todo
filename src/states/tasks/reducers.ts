@@ -6,7 +6,8 @@ const tasks = (state: any, action: any) => {
     case types.ADD_TASK:
       return [...state, { title: action.title, status: false }];
     default:
-      return state;
+      // return state;
+      return [];
   }
 };
 

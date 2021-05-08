@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Container } from "@material-ui/core";
 import WithNavigationLayout from "../components/templates/WithNavigationLayout";
-import TaskRegisterForm from "../components/atoms/TaskRegisterForm/TaskRegisterForm";
+import TaskRegisterForm from "../components/organisms/TaskRegisterForm/TaskRegisterForm";
 import TaskList from "../components/organisms/TaskList/TaskList";
 
 const submit = (text: string) => {
