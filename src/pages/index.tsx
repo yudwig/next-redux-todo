@@ -4,10 +4,9 @@ import WithNavigationLayout from "../components/templates/WithNavigationLayout";
 import TaskRegisterForm from "../components/atoms/TaskRegisterForm/TaskRegisterForm";
 import TaskList from "../components/organisms/TaskList/TaskList";
 
-const submit = (e: any) => {
+const submit = (text: string) => {
   console.log("submit is called.");
-  console.log(e);
-  e.preventDefault();
+  console.log("text: ", text);
 };
 
 const Index: React.FC = () => {
