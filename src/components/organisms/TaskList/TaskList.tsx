@@ -1,15 +1,12 @@
 import * as React from "react";
-
+import { useSelector } from "react-redux";
 import TaskListItem from "../../molecules/TaskListItem/TaskListItem";
+import selectors from "../../../states/tasks/selectors";
 
 const TaskList: React.FC = () => {
-  const tasks = [
-    { title: "this is todo 1.", status: true },
-    { title: "this is todo 2.", status: false },
-    { title: "this is todo 3.", status: true },
-  ];
+  const tasks = useSelector(selectors.getAllTasks) || [];
 
-  const taskList = tasks.map((task, index) => (
+  const taskList = tasks.map((task: any, index: any) => (
     <TaskListItem
       key={index.toString()}
       title={task.title}

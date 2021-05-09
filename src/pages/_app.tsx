@@ -15,11 +15,19 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     }
   }, []);
 
+  const states = {
+    tasks: [
+      { title: "first task", status: false },
+      { title: "second task", status: true },
+      { title: "third task", status: false },
+    ],
+  };
+
   return (
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
-          <Provider store={configureStore()}>
+          <Provider store={configureStore(states)}>
             <CssBaseline />
             <Component {...pageProps} />
           </Provider>

@@ -1,13 +1,12 @@
 import * as React from "react";
 import { FormEvent, useRef, KeyboardEvent } from "react";
+import { useDispatch } from "react-redux";
 import TextInput from "../../atoms/TextInput/TextInput";
+import { addTask } from "../../../states/tasks/actions";
 
-interface Props {
-  onSubmit: (text: string) => void;
-}
-
-const TaskRegisterForm: React.FC<Props> = (props) => {
+const TaskRegisterForm: React.FC = (props) => {
   const input = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
 
   const keyDown = (e: KeyboardEvent) => {
     if (!input || !input.current) {
@@ -27,7 +26,7 @@ const TaskRegisterForm: React.FC<Props> = (props) => {
     if (!val) {
       return;
     }
-    props.onSubmit(val);
+    dispatch(addTask(val));
     input.current.value = "";
   };
 

@@ -6,6 +6,6 @@ export default {
   component: TaskRegisterForm,
 } as Meta;
 
-const Template: Story = () => <TaskRegisterForm onSubmit={() => null} />;
+const Template: Story = () => <TaskRegisterForm />;
 
 export const index = Template;
