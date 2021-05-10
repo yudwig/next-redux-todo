@@ -2,7 +2,7 @@ import { Meta, Story } from "@storybook/react";
 import TextInput from "./TextInput";
 
 export default {
-  title: "TextInput",
+  title: "atoms/TextInput",
   component: TextInput,
 } as Meta;
 
