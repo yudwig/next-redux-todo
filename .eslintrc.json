@@ -57,6 +57,7 @@
         "peerDependencies": false
       }
     ],
+    "no-useless-constructor": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports-ts": "warn",
     "@typescript-eslint/no-use-before-define": "error",
