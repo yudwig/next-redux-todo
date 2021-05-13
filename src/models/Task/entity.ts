@@ -5,20 +5,28 @@ class Task {
 
   readonly title: string;
 
-  readonly status: boolean;
+  private status: number;
 
   readonly createdAt: Date;
 
   constructor(props: {
     id?: string;
     title: string;
-    status?: boolean;
+    status?: number;
     createdAt?: Date;
   }) {
     this.id = props.id ? props.id : nanoid();
     this.title = props.title;
-    this.status = props.status !== undefined ? props.status : false;
+    this.status = props.status !== undefined ? props.status : 0;
     this.createdAt = props.createdAt ? props.createdAt : new Date();
+  }
+
+  public isCompleted() {
+    return this.status === 1;
+  }
+
+  public complete() {
+    this.status = 1;
   }
 }
 
