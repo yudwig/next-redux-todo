@@ -17,7 +17,7 @@ const Item: any = styled(ListItem)`
 
 interface Props {
   title: string;
-  status: boolean;
+  isCompleted: boolean;
 }
 
 const TaskListItem: React.FC<Props> = (props) => {
@@ -25,7 +25,7 @@ const TaskListItem: React.FC<Props> = (props) => {
     <Item>
       <Flex justifyContent="space-between" width="100%">
         <FormControlLabel
-          control={<StatusIndicator status={props.status} />}
+          control={<StatusIndicator status={props.isCompleted} />}
           label={props.title}
         />
         <Flex>

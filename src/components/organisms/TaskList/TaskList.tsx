@@ -10,7 +10,7 @@ const TaskList: React.FC = () => {
     <TaskListItem
       key={index.toString()}
       title={task.title}
-      status={task.status}
+      isCompleted={task.isCompleted()}
     />
   ));
 
