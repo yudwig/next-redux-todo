@@ -6,6 +6,7 @@ import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import theme from "../configs/theme";
 import configureStore from "../states/store";
+import mock from "../models/Task/mock";
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   useEffect(() => {
@@ -16,11 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   }, []);
 
   const states = {
-    tasks: [
-      { title: "first task", status: false },
-      { title: "second task", status: true },
-      { title: "third task", status: false },
-    ],
+    tasks: mock.getTaskList(),
   };
 
   return (
