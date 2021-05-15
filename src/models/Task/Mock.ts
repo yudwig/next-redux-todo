@@ -2,9 +2,21 @@ import { Factory } from "./Factory";
 
 const getTaskList = () => {
   return [
-    Factory.create({ title: "task 1", status: 0 }),
-    Factory.create({ title: "task 2", status: 1 }),
-    Factory.create({ title: "task 3", status: 0 }),
+    Factory.create({
+      id: "abcdefghijkLMNOPQRST1",
+      title: "task 1",
+      status: "0",
+    }),
+    Factory.create({
+      id: "abcdefghijkLMNOPQRST2",
+      title: "task 2",
+      status: "1",
+    }),
+    Factory.create({
+      id: "abcdefghijkLMNOPQRST3",
+      title: "task 3",
+      status: "0",
+    }),
   ];
 };
 

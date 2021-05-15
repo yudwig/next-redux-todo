@@ -39,7 +39,7 @@ export class Task {
       id: this.id.val.toString(),
       title: this.title.toString(),
       status: this.status.toString(),
-      createdAt: this.createdAt.toString(),
+      createdAt: this.createdAt.getTime().toString(),
     };
   }
 }
