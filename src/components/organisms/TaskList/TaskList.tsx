@@ -7,11 +7,22 @@ import Task from "../../../models/Task/Task";
 const TaskList: React.FC = () => {
   const tasks = useSelector(selectors.getAllTasks) || [];
 
-  const taskList = tasks.map((task: Task, index: any) => (
+  const onClickStatusIndicator = (id: string) => {
+    console.log("status change.", id);
+  };
+
+  const onClickArchiveButton = (id: string) => {
+    console.log("archive.", id);
+  };
+
+  const taskList = tasks.map((task: Task) => (
     <TaskListItem
-      key={index.toString()}
+      key={task.getId()}
+      id={task.getId()}
       title={task.title}
       isCompleted={task.isCompleted()}
+      onClickStatusIndicator={onClickStatusIndicator}
+      onClickArchiveButton={onClickArchiveButton}
     />
   ));
 

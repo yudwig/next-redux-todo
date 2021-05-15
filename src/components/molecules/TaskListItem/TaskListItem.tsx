@@ -16,8 +16,11 @@ const Item: any = styled(ListItem)`
 `;
 
 interface Props {
+  id: string;
   title: string;
   isCompleted: boolean;
+  onClickStatusIndicator: (id: string) => void;
+  onClickArchiveButton: (id: string) => void;
 }
 
 const TaskListItem: React.FC<Props> = (props) => {
@@ -25,10 +28,14 @@ const TaskListItem: React.FC<Props> = (props) => {
     <Item>
       <Flex justifyContent="space-between" width="100%">
         <FormControlLabel
-          control={<StatusIndicator status={props.isCompleted} />}
-          label={props.title}
+          control={
+            <Box onClick={() => props.onClickStatusIndicator(props.id)}>
+              <StatusIndicator status={props.isCompleted} />
+            </Box>
+          }
+          label={<Box>{props.title}</Box>}
         />
-        <Flex>
+        <Flex onClick={() => props.onClickArchiveButton(props.id)}>
           <ArchiveButton />
         </Flex>
       </Flex>
