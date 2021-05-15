@@ -7,7 +7,7 @@ export interface Input {
   id?: string;
   title: string;
   status?: string;
-  timestamp?: string;
+  createdAt?: string;
 }
 
 export class Factory {
@@ -18,8 +18,8 @@ export class Factory {
       status: new Status(
         props.status !== undefined ? parseInt(props.status, 10) : Status.READY
       ),
-      createdAt: props.timestamp
-        ? new Date(parseInt(props.timestamp, 10))
+      createdAt: props.createdAt
+        ? new Date(parseInt(props.createdAt, 10))
         : new Date(),
     });
   }
