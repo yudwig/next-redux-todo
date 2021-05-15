@@ -1,10 +1,10 @@
 import types from "./types";
-import Task from "../../models/Task/entity";
+import { Factory } from "../../models/Task/Factory";
 
 const tasks = (state: any, action: any) => {
   switch (action.type) {
     case types.ADD_TASK:
-      return [...state, new Task({ title: action.title })];
+      return [...state, Factory.create({ title: action.title }).serialize()];
     default:
       return state ? state.slice() : [];
   }

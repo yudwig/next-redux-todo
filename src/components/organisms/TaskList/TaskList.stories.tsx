@@ -2,7 +2,7 @@ import { Meta, Story } from "@storybook/react";
 import { Provider } from "react-redux";
 import TaskList from "./TaskList";
 import configureStore from "../../../states/store";
-import mock from "../../../models/Task/mock";
+import mock from "../../../models/Task/Mock";
 
 export default {
   title: "organisms/TaskList",

@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import theme from "../configs/theme";
 import configureStore from "../states/store";
-import mock from "../models/Task/mock";
+import mock from "../models/Task/Mock";
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   useEffect(() => {
@@ -17,7 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   }, []);
 
   const states = {
-    tasks: mock.getTaskList(),
+    tasks: mock.getSerializedTaskList(),
   };
 
   return (

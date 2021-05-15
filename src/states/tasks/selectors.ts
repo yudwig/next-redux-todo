@@ -1,7 +1,9 @@
 import { createSelector } from "reselect";
-import Task from "../../models/Task/entity";
+import { Factory } from "../../models/Task/Factory";
+import Task from "../../models/Task/Task";
 
-const tasksSelector = (state: any) => state.tasks;
+const tasksSelector = (state: any) =>
+  state.tasks.map((task: any) => Factory.create(task));
 
 const getAllTasks = tasksSelector;
 
