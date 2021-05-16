@@ -15,6 +15,10 @@ const TaskList: React.FC = () => {
     console.log("archive.", id);
   };
 
+  const onEnterTitle = (id: string, title: string) => {
+    console.log("title changed.", id, title);
+  };
+
   const taskList = tasks.map((task: Task) => (
     <TaskListItem
       key={task.getId()}
@@ -23,6 +27,7 @@ const TaskList: React.FC = () => {
       isCompleted={task.isCompleted()}
       onClickStatusIndicator={onClickStatusIndicator}
       onClickArchiveButton={onClickArchiveButton}
+      onEnterTitle={onEnterTitle}
     />
   ));
 

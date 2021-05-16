@@ -8,7 +8,7 @@ const TaskRegisterForm: React.FC = (props) => {
   const input = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
-  const keyDown = (e: KeyboardEvent) => {
+  const onKeyDown = (e: KeyboardEvent) => {
     if (!input || !input.current) {
       return;
     }
@@ -17,7 +17,7 @@ const TaskRegisterForm: React.FC = (props) => {
     }
   };
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input || !input.current) {
       return;
@@ -31,13 +31,13 @@ const TaskRegisterForm: React.FC = (props) => {
   };
 
   return (
-    <form noValidate autoComplete="off" onSubmit={submit}>
+    <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <TextInput
         label="Todo"
         fullWidth
         autoFocus
         inputRef={input}
-        onKeyDown={keyDown}
+        onKeyDown={onKeyDown}
       />
     </form>
   );

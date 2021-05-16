@@ -7,7 +7,7 @@ const Field = styled(TextField)`
 `;
 
 const TextInput: React.FC<TextFieldProps> = (props) => {
-  return <Field {...props} />;
+  return <Field {...props} fullWidth />;
 };
 
 export default TextInput;
