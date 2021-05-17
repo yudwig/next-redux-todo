@@ -34,6 +34,10 @@ export class Task {
     this.status = new Status(Status.COMPLETED);
   }
 
+  public incomplete(): void {
+    this.status = new Status(Status.READY);
+  }
+
   public serialize() {
     return {
       id: this.id.val.toString(),
