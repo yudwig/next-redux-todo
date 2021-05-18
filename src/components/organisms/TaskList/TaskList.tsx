@@ -1,30 +1,42 @@
 import * as React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TaskListItem from "../../molecules/TaskListItem/TaskListItem";
 import selectors from "../../../states/tasks/selectors";
-import Task from "../../../models/Task/Task";
+import operations from "../../../states/tasks/operations";
 
 const TaskList: React.FC = () => {
-  const tasks = useSelector(selectors.getAllTasks) || [];
+  const tasks = useSelector(selectors.getInboxTasks) || [];
+  const dispatch = useDispatch();
+
+  const findTask = (id: string) => tasks.find((task) => task.props.id === id);
 
   const onClickStatusIndicator = (id: string) => {
-    console.log("status change.", id);
+    const task = findTask(id);
+    if (task) {
+      dispatch(operations.toggleStatus(task.entity));
+    }
   };
 
   const onClickArchiveButton = (id: string) => {
-    console.log("archive.", id);
+    const task = findTask(id);
+    if (task) {
+      dispatch(operations.archive(task.entity));
+    }
   };
 
   const onEnterTitle = (id: string, title: string) => {
-    console.log("title changed.", id, title);
+    const task = findTask(id);
+    if (task) {
+      dispatch(operations.updateTitle(task.entity, title));
+    }
   };
 
-  const taskList = tasks.map((task: Task) => (
+  const taskList = tasks.map((task) => (
     <TaskListItem
-      key={task.getId()}
-      id={task.getId()}
-      title={task.title}
-      isCompleted={task.isCompleted()}
+      key={task.props.id}
+      id={task.props.id}
+      title={task.props.title}
+      isCompleted={task.props.isCompleted}
       onClickStatusIndicator={onClickStatusIndicator}
       onClickArchiveButton={onClickArchiveButton}
       onEnterTitle={onEnterTitle}

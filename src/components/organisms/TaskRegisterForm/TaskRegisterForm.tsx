@@ -2,7 +2,7 @@ import * as React from "react";
 import { FormEvent, useRef, KeyboardEvent } from "react";
 import { useDispatch } from "react-redux";
 import TextInput from "../../atoms/TextInput/TextInput";
-import { addTask } from "../../../states/tasks/actions";
+import * as taskOperations from "../../../states/tasks/operations";
 
 const TaskRegisterForm: React.FC = (props) => {
   const input = useRef<HTMLInputElement>(null);
@@ -26,7 +26,7 @@ const TaskRegisterForm: React.FC = (props) => {
     if (!val) {
       return;
     }
-    dispatch(addTask(val));
+    dispatch(taskOperations.create(val));
     input.current.value = "";
   };
 

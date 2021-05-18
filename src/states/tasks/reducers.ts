@@ -1,10 +1,16 @@
 import types from "./types";
-import { Factory } from "../../models/Task/Factory";
 
 const tasks = (state: any, action: any) => {
+  let index: number;
   switch (action.type) {
-    case types.ADD_TASK:
-      return [...state, Factory.create({ title: action.title }).serialize()];
+    case types.CREATE_TASK:
+      return [...state, action.task];
+    case types.UPDATE_TASK:
+      index = state.findIndex((task: any) => task.id === action.task.id);
+      if (index < 0) {
+        return state.slice();
+      }
+      return state.slice().splice(index, 1, action.task);
     default:
       return state ? state.slice() : [];
   }
