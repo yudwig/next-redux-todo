@@ -1,10 +1,16 @@
 import types from "./types";
 
-export const addTask = (title: string) => ({
-  type: types.ADD_TASK,
-  title,
+export const create = (task: any) => ({
+  type: types.CREATE_TASK,
+  task,
+});
+
+export const update = (id: string, task: any) => ({
+  type: types.UPDATE_TASK,
+  task,
 });
 
 export default {
-  addTask,
+  create,
+  update,
 };

@@ -1,5 +1,7 @@
-const ADD_TASK = "ADD_TASK";
+const CREATE_TASK = "CREATE_TASK";
+const UPDATE_TASK = "UPDATE_TASK";
 
 export default {
-  ADD_TASK,
+  CREATE_TASK,
+  UPDATE_TASK,
 };
