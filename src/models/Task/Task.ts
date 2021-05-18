@@ -4,9 +4,11 @@ import { Status } from "./Status";
 export class Task {
   private id: Id;
 
-  readonly title: string;
+  private title: string;
 
   private status: Status;
+
+  private archived: boolean;
 
   private createdAt: Date;
 
@@ -14,11 +16,13 @@ export class Task {
     id: Id;
     title: string;
     status: Status;
+    archived: boolean;
     createdAt: Date;
   }) {
     this.id = props.id;
     this.title = props.title;
     this.status = props.status;
+    this.archived = props.archived;
     this.createdAt = props.createdAt;
   }
 
@@ -26,8 +30,16 @@ export class Task {
     return this.id.val;
   }
 
+  public getTitle(): string {
+    return this.title;
+  }
+
   public isCompleted(): boolean {
     return this.status.isCompleted();
+  }
+
+  public isArchived(): boolean {
+    return this.archived;
   }
 
   public complete(): void {
@@ -36,6 +48,22 @@ export class Task {
 
   public incomplete(): void {
     this.status = new Status(Status.READY);
+  }
+
+  public toggleStatus(): void {
+    if (this.isCompleted()) {
+      this.incomplete();
+    } else {
+      this.complete();
+    }
+  }
+
+  public archive(): void {
+    this.archived = true;
+  }
+
+  public changeTitle(title: string): void {
+    this.title = title;
   }
 
   public serialize() {
