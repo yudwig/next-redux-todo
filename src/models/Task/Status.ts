@@ -9,12 +9,12 @@ export class Status {
     this.val = status || Status.READY;
   }
 
-  public isCompleted() {
+  public isCompleted(): boolean {
     return this.val === Status.COMPLETED;
   }
 
-  public toString() {
-    return this.val.toString();
+  public getValue(): number {
+    return this.val;
   }
 }
 

@@ -7,7 +7,7 @@ export class Id {
     this.val = id || nanoid();
   }
 
-  public toString() {
+  public getValue(): string {
     return this.val;
   }
 }

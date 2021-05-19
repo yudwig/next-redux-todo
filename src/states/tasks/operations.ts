@@ -9,17 +9,28 @@ export const create = (title: string) => {
 
 export const updateTitle = (task: Task, title: string) => {
   task.changeTitle(title);
-  return actions.updateTask(task.getId(), task.serialize());
+  return actions.updateTaskTitle(task.getId(), task.serialize());
 };
 
 export const toggleStatus = (task: Task) => {
-  task.toggleStatus();
-  return actions.updateTask(task.getId(), task.serialize());
+  if (task.isCompleted()) {
+    task.incomplete();
+    console.log("toggle status incomplete.", task);
+    return actions.incompleteTask(task.getId(), task.serialize());
+  }
+  console.log("toggle status complete.", task);
+  task.complete();
+  return actions.completeTask(task.getId(), task.serialize());
 };
 
 export const archive = (task: Task) => {
+  if (task.isArchived()) {
+    task.unarchive();
+    return actions.unarchiveTask(task.getId(), task.serialize());
+  }
+
   task.archive();
-  return actions.updateTask(task.getId(), task.serialize());
+  return actions.archiveTask(task.getId(), task.serialize());
 };
 
 export default {

@@ -50,16 +50,12 @@ export class Task {
     this.status = new Status(Status.READY);
   }
 
-  public toggleStatus(): void {
-    if (this.isCompleted()) {
-      this.incomplete();
-    } else {
-      this.complete();
-    }
-  }
-
   public archive(): void {
     this.archived = true;
+  }
+
+  public unarchive(): void {
+    this.archived = false;
   }
 
   public changeTitle(title: string): void {
@@ -68,9 +64,10 @@ export class Task {
 
   public serialize() {
     return {
-      id: this.id.val.toString(),
-      title: this.title.toString(),
-      status: this.status.toString(),
+      id: this.id.getValue(),
+      title: this.title,
+      status: this.status.getValue(),
+      archived: this.archived,
       createdAt: this.createdAt.getTime().toString(),
     };
   }
