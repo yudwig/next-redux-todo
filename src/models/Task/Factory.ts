@@ -8,7 +8,7 @@ export interface Input {
   title: string;
   status?: number;
   archived?: boolean;
-  createdAt?: string;
+  createdAt?: number;
 }
 
 export class Factory {
@@ -20,9 +20,7 @@ export class Factory {
         props.status !== undefined ? props.status : Status.READY
       ),
       archived: props.archived !== undefined ? props.archived : false,
-      createdAt: props.createdAt
-        ? new Date(parseInt(props.createdAt, 10))
-        : new Date(),
+      createdAt: props.createdAt ? new Date(props.createdAt) : new Date(),
     });
   }
 }

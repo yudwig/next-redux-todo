@@ -68,7 +68,7 @@ export class Task {
       title: this.title,
       status: this.status.getValue(),
       archived: this.archived,
-      createdAt: this.createdAt.getTime().toString(),
+      createdAt: this.createdAt.getTime(),
     };
   }
 }
