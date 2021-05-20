@@ -68,8 +68,9 @@ const TaskListItem: React.FC<Props> = (props) => {
     setUpdateMode(false);
   };
 
-  const changeToUpdateMode = () => {
+  const changeToUpdateMode = (e: any) => {
     setUpdateMode(true);
+    e.preventDefault();
     setTimeout(() => {
       if (!input || !input.current) {
         return;
