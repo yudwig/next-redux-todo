@@ -27,7 +27,7 @@ export class Task {
   }
 
   public getId(): string {
-    return this.id.val;
+    return this.id.getValue();
   }
 
   public getTitle(): string {
