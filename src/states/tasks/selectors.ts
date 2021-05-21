@@ -20,8 +20,15 @@ const createViewObject = (task: Task) => ({
   },
 });
 
-const tasksSelector = (state: any) =>
-  state.tasks.map((task: any) => createViewObject(Factory.create(task)));
+const tasksSelector = (state: any) => {
+  const tasks = state.tasks.map((task: any) =>
+    createViewObject(Factory.create(task))
+  );
+  tasks.sort((a: ViewObject, b: ViewObject) =>
+    a.entity.getCreatedTimestamp() < b.entity.getCreatedTimestamp() ? 1 : -1
+  );
+  return tasks;
+};
 
 const getInboxTasks = createSelector([tasksSelector], (vos): [ViewObject] =>
   vos.filter((vo: ViewObject) => !vo.entity.isArchived())

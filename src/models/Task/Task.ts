@@ -62,6 +62,10 @@ export class Task {
     this.title = title;
   }
 
+  public getCreatedTimestamp(): number {
+    return this.createdAt.getTime();
+  }
+
   public serialize() {
     return {
       id: this.id.getValue(),
