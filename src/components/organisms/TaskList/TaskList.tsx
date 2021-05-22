@@ -1,14 +1,18 @@
 import * as React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import TaskListItem from "../../molecules/TaskListItem/TaskListItem";
-import selectors from "../../../states/tasks/selectors";
+import { ViewObject } from "../../../states/tasks/selectors";
 import operations from "../../../states/tasks/operations";
 
-const TaskList: React.FC = () => {
-  const tasks = useSelector(selectors.getInboxTasks) || [];
+interface Props {
+  tasks: ViewObject[];
+}
+
+const TaskList: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
 
-  const findTask = (id: string) => tasks.find((task) => task.props.id === id);
+  const findTask = (id: string) =>
+    props.tasks.find((task) => task.props.id === id);
 
   const onClickStatusIndicator = (id: string) => {
     const task = findTask(id);
@@ -31,7 +35,7 @@ const TaskList: React.FC = () => {
     }
   };
 
-  const taskList = tasks.map((task) => (
+  const taskList = props.tasks.map((task) => (
     <TaskListItem
       key={task.props.id}
       id={task.props.id}

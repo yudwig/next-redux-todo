@@ -1,7 +1,9 @@
 import * as React from "react";
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
+import CheckBoxOutlinedIcon from "@material-ui/icons/CheckBoxOutlined";
 import styled from "styled-components";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import Link from "next/link";
 
 const StyledIcon = styled(ListItemIcon)`
   &.MuiListItemIcon-root {
@@ -15,16 +17,24 @@ const StyledText = styled(ListItemText)`
 
 const DrawerLinkList: React.FC = () => {
   return (
-    <>
-      <List>
-        <ListItem button>
+    <List>
+      <Link href="/" passHref>
+        <ListItem button component="a">
           <StyledIcon>
-            <InboxIcon />
+            <CheckBoxOutlinedIcon />
           </StyledIcon>
-          <StyledText primary="Inbox" className="text" />
+          <StyledText primary="Inbox" />
         </ListItem>
-      </List>
-    </>
+      </Link>
+      <Link href="/tasks/archived" passHref>
+        <ListItem button component="a">
+          <StyledIcon>
+            <DeleteOutlineIcon />
+          </StyledIcon>
+          <StyledText primary="Archive" />
+        </ListItem>
+      </Link>
+    </List>
   );
 };
 

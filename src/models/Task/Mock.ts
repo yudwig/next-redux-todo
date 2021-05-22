@@ -17,6 +17,18 @@ const getTaskList = () => {
       title: "task 3",
       status: 0,
     }),
+    Factory.create({
+      id: "abcdefghijkLMNOPQRST4",
+      title: "task 4",
+      status: 0,
+      archived: true,
+    }),
+    Factory.create({
+      id: "abcdefghijkLMNOPQRST5",
+      title: "task 5",
+      status: 1,
+      archived: true,
+    }),
   ];
 };
 

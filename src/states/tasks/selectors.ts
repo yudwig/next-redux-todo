@@ -2,7 +2,7 @@ import { createSelector } from "reselect";
 import { Factory } from "../../models/Task/Factory";
 import Task from "../../models/Task/Task";
 
-interface ViewObject {
+export interface ViewObject {
   entity: Task;
   props: {
     id: string;
@@ -34,6 +34,11 @@ const getInboxTasks = createSelector([tasksSelector], (vos): [ViewObject] =>
   vos.filter((vo: ViewObject) => !vo.entity.isArchived())
 );
 
+const getArchivedTasks = createSelector([tasksSelector], (vos): [ViewObject] =>
+  vos.filter((vo: ViewObject) => vo.entity.isArchived())
+);
+
 export default {
   getInboxTasks,
+  getArchivedTasks,
 };
