@@ -1,7 +1,7 @@
 import { Meta, Story } from "@storybook/react";
 import * as React from "react";
 import MiniVariantDrawer from "./MiniVariantDrawer";
-import DrawerLinkList from "../../organisms/DrawerLinkList/DrawerLinkList";
+import DrawerLinkList from "../../molecules/DrawerLinkList/DrawerLinkList";
 
 export default {
   title: "molecules/MiniVariantDrawer",

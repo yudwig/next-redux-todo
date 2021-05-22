@@ -1,10 +1,11 @@
 import * as React from "react";
 import { useState } from "react";
-import { Box, Container } from "@material-ui/core";
+import { Box, Container, useMediaQuery, useTheme } from "@material-ui/core";
 import styled from "styled-components";
-import MiniVariantDrawer from "../../molecules/MiniVariantDrawer/MiniVariantDrawer";
 import Navbar from "../../molecules/Navbar/Navbar";
-import DrawerLinkList from "../DrawerLinkList/DrawerLinkList";
+import DrawerLinkList from "../../molecules/DrawerLinkList/DrawerLinkList";
+import MiniVariantDrawer from "../MiniVariantDrawer/MiniVariantDrawer";
+import TemporaryDrawer from "../TemporaryDrawer/TemporaryDrawer";
 
 const Content = styled.main`
   width: 100%;
@@ -15,10 +16,10 @@ interface Props {
 }
 
 const Navigation: React.FC<Props> = (props) => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
   const [isOpenSidebar, setSidebarState] = useState(true);
-  const openSidebar = () => {
-    setSidebarState(true);
-  };
   const closeSidebar = () => {
     setSidebarState(false);
   };
@@ -26,13 +27,27 @@ const Navigation: React.FC<Props> = (props) => {
     setSidebarState(!isOpenSidebar);
   };
 
+  const miniVariantDrawer = (
+    <MiniVariantDrawer open={isOpenSidebar} onClose={closeSidebar}>
+      <DrawerLinkList />
+    </MiniVariantDrawer>
+  );
+
+  const temporaryDrawer = (
+    <TemporaryDrawer
+      open={isOpenSidebar}
+      onClose={closeSidebar}
+      onClickCloseButton={closeSidebar}
+    >
+      <DrawerLinkList />
+    </TemporaryDrawer>
+  );
+
   return (
     <>
       <Navbar title={props.title} onToggleDrawer={toggleSidebar} />
       <Box display="flex">
-        <MiniVariantDrawer open={isOpenSidebar} onClose={closeSidebar}>
-          <DrawerLinkList />
-        </MiniVariantDrawer>
+        {matches ? miniVariantDrawer : temporaryDrawer}
         <Content>
           <Container maxWidth="xl">
             <Box>{props.children}</Box>
