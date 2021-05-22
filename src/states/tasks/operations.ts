@@ -8,7 +8,11 @@ export const create = (title: string) => {
 };
 
 export const updateTitle = (task: Task, title: string) => {
-  task.changeTitle(title);
+  try {
+    task.changeTitle(title);
+  } catch (e) {
+    return actions.errorUpdateTaskTitle(task.getId(), e.toString());
+  }
   return actions.updateTaskTitle(task.getId(), task.serialize());
 };
 

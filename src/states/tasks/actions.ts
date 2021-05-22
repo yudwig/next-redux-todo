@@ -11,6 +11,12 @@ export const updateTaskTitle = (id: string, task: any) => ({
   task,
 });
 
+export const errorUpdateTaskTitle = (id: string, message: string) => ({
+  type: types.ERROR_UPDATE_TASK_TITLE,
+  id,
+  message,
+});
+
 export const completeTask = (id: string, task: any) => ({
   type: types.COMPLETE_TASK,
   id,
@@ -42,4 +48,5 @@ export default {
   incompleteTask,
   archiveTask,
   unarchiveTask,
+  errorUpdateTaskTitle,
 };

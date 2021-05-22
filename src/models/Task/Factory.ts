@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 import Task from "./Task";
 import { Id } from "./Id";
 import { Status } from "./Status";
+import { Title } from "./Title";
 
 export interface Input {
   id?: string;
@@ -15,7 +16,7 @@ export class Factory {
   public static create(props: Input): Task {
     return new Task({
       id: new Id(props.id ? props.id : nanoid()),
-      title: props.title,
+      title: new Title(props.title),
       status: new Status(
         props.status !== undefined ? props.status : Status.READY
       ),

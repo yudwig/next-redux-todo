@@ -1,10 +1,11 @@
 import { Id } from "./Id";
 import { Status } from "./Status";
+import { Title } from "./Title";
 
 export class Task {
   private id: Id;
 
-  private title: string;
+  private title: Title;
 
   private status: Status;
 
@@ -14,7 +15,7 @@ export class Task {
 
   constructor(props: {
     id: Id;
-    title: string;
+    title: Title;
     status: Status;
     archived: boolean;
     createdAt: Date;
@@ -31,7 +32,7 @@ export class Task {
   }
 
   public getTitle(): string {
-    return this.title;
+    return this.title.getValue();
   }
 
   public isCompleted(): boolean {
@@ -59,7 +60,7 @@ export class Task {
   }
 
   public changeTitle(title: string): void {
-    this.title = title;
+    this.title = new Title(title);
   }
 
   public getCreatedTimestamp(): number {
@@ -68,8 +69,8 @@ export class Task {
 
   public serialize() {
     return {
-      id: this.id.getValue(),
-      title: this.title,
+      id: this.getId(),
+      title: this.getTitle(),
       status: this.status.getValue(),
       archived: this.archived,
       createdAt: this.createdAt.getTime(),
