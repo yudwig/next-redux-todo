@@ -28,7 +28,7 @@ const Item: any = styled(ListItem)`
 interface Props {
   id: string;
   title: string;
-  isCompleted: boolean;
+  completed: boolean;
   onClickStatusIndicator: (id: string) => void;
   onClickArchiveButton: (id: string) => void;
   onEnterTitle: (id: string, title: string) => void;
@@ -100,7 +100,7 @@ const TaskListItem: React.FC<Props> = (props) => {
         <Label
           control={
             <Box onClick={() => props.onClickStatusIndicator(props.id)}>
-              <StatusIndicator status={props.isCompleted} />
+              <StatusIndicator status={props.completed} />
             </Box>
           }
           label={isUpdateMode ? titleInput : titleDisplay}

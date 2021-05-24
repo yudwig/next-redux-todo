@@ -40,7 +40,7 @@ const TaskList: React.FC<Props> = (props) => {
       key={task.props.id}
       id={task.props.id}
       title={task.props.title}
-      isCompleted={task.props.isCompleted}
+      completed={task.props.isCompleted}
       onClickStatusIndicator={onClickStatusIndicator}
       onClickArchiveButton={onClickArchiveButton}
       onEnterTitle={onEnterTitle}
