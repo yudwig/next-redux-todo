@@ -1,10 +1,9 @@
 import * as React from "react";
 import { Box, FormControlLabel, ListItem } from "@material-ui/core";
 import styled from "styled-components";
-import { FormEvent, KeyboardEvent, useRef, useState } from "react";
 import StatusIndicator from "../../atoms/StatusIndicator/StatusIndicator";
-import ArchiveButton from "../../atoms/ArchiveButton/ArchiveButton";
-import TextInput from "../../atoms/TextInput/TextInput";
+import ArchivedStateButton from "../../atoms/ArchivedStateButton/ArchivedStateButton";
+import ToggleInput from "../../atoms/ToggleInput/ToggleInput";
 
 const Flex = styled(Box)`
   display: flex;
@@ -14,7 +13,6 @@ const Flex = styled(Box)`
 
 const Label = styled(FormControlLabel)`
   width: 100%;
-
   span.MuiTypography-root {
     width: 100%;
   }
@@ -26,87 +24,43 @@ const Item: any = styled(ListItem)`
 `;
 
 interface Props {
-  id: string;
   title: string;
   completed: boolean;
-  onClickStatusIndicator: (id: string) => void;
-  onClickArchiveButton: (id: string) => void;
-  onEnterTitle: (id: string, title: string) => void;
+  disabled: boolean;
+  buttonType: "archive" | "unarchive";
+  onClickStatus?: () => void;
+  onClickButton?: () => void;
+  onEnterTitle?: (title: string) => void;
 }
 
 const TaskListItem: React.FC<Props> = (props) => {
-  const [isUpdateMode, setUpdateMode] = useState(false);
-  const input = useRef<HTMLInputElement>(null);
-
-  const enter = () => {
-    if (!input || !input.current || input.current.value === props.title) {
-      return;
-    }
-    props.onEnterTitle(
-      props.id,
-      input && input.current && input.current.value ? input.current.value : ""
-    );
-  };
-  const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Escape") {
-      if (!input || !input.current) {
-        return;
-      }
-      input.current.value = props.title;
-      setUpdateMode(false);
-    }
-  };
-
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    enter();
-    setUpdateMode(false);
-  };
-
-  const onBlur = (e: any) => {
-    enter();
-    setUpdateMode(false);
-  };
-
-  const changeToUpdateMode = (e: any) => {
-    setUpdateMode(true);
-    e.preventDefault();
-    setTimeout(() => {
-      if (!input || !input.current) {
-        return;
-      }
-      input.current.focus();
-    }, 1);
-  };
-
-  const titleDisplay = <Box onClick={changeToUpdateMode}>{props.title}</Box>;
-  const titleInput = (
-    <Box>
-      <form noValidate autoComplete="off" onSubmit={onSubmit}>
-        <TextInput
-          fullWidth
-          inputRef={input}
-          defaultValue={props.title}
-          onKeyDown={onKeyDown}
-          onBlur={onBlur}
-        />
-      </form>
-    </Box>
-  );
-
   return (
     <Item>
       <Flex justifyContent="space-between" width="100%">
         <Label
           control={
-            <Box onClick={() => props.onClickStatusIndicator(props.id)}>
-              <StatusIndicator status={props.completed} />
+            <Box onClick={props.onClickStatus || (() => null)}>
+              <StatusIndicator
+                status={props.completed}
+                disabled={props.disabled}
+              />
             </Box>
           }
-          label={isUpdateMode ? titleInput : titleDisplay}
+          label={
+            <Box onClick={(e: any) => e.preventDefault()}>
+              {props.disabled ? (
+                <span>{props.title}</span>
+              ) : (
+                <ToggleInput
+                  title={props.title}
+                  onEnter={props.onEnterTitle || ((title: string) => null)}
+                />
+              )}
+            </Box>
+          }
         />
-        <Flex onClick={() => props.onClickArchiveButton(props.id)}>
-          <ArchiveButton />
+        <Flex onClick={props.onClickButton || (() => null)}>
+          <ArchivedStateButton iconType={props.buttonType} />
         </Flex>
       </Flex>
     </Item>
