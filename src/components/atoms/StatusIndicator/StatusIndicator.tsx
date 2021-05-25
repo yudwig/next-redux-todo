@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 interface Props {
   status: boolean;
+  disabled: boolean;
 }
 
 const Button = styled(IconButton)`
@@ -13,8 +14,12 @@ const Button = styled(IconButton)`
 
 const StatusIndicator: React.FC<Props> = (props) => {
   return (
-    <Button>
-      <Checkbox checked={props.status} />
+    <Button
+      disableRipple={props.disabled}
+      disableFocusRipple={props.disabled}
+      disabled={props.disabled}
+    >
+      <Checkbox checked={props.status} disabled={props.disabled} />
     </Button>
   );
 };

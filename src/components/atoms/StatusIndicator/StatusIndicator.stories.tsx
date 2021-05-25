@@ -10,15 +10,24 @@ export default {
         type: "boolean",
       },
     },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
   },
 } as Meta;
 
-const Template: Story = (args) => <StatusIndicator status={args.status} />;
+const Template: Story = (args) => (
+  <StatusIndicator status={args.status} disabled={args.disabled} />
+);
 export const Active = Template.bind({});
 Active.args = {
   status: false,
+  disabled: false,
 };
 export const Done = Template.bind({});
 Done.args = {
   status: true,
+  disabled: false,
 };
