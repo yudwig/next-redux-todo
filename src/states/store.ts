@@ -1,10 +1,15 @@
-import { combineReducers, createStore } from "redux";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { composeWithDevTools } from "redux-devtools-extension";
+import { configureStore } from "@reduxjs/toolkit";
 import tasks from "./tasks/reducers";
+import mock from "../models/Task/Mock";
 
-export default function configureStore(states: any) {
-  const reducers = combineReducers({ tasks });
-  const composedEnhancers = composeWithDevTools();
-  return createStore(reducers, states, composedEnhancers);
-}
+const preloadedState = {
+  tasks: mock.getSerializedTaskList(),
+};
+
+export default configureStore({
+  reducer: {
+    tasks,
+  },
+  preloadedState,
+  devTools: process.env.NODE_ENV !== "production",
+});

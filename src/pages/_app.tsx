@@ -5,8 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import theme from "../configs/theme";
-import configureStore from "../states/store";
-import mock from "../models/Task/Mock";
+import store from "../states/store";
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   useEffect(() => {
@@ -16,15 +15,11 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     }
   }, []);
 
-  const states = {
-    tasks: mock.getSerializedTaskList(),
-  };
-
   return (
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
-          <Provider store={configureStore(states)}>
+          <Provider store={store}>
             <CssBaseline />
             <Component {...pageProps} />
           </Provider>

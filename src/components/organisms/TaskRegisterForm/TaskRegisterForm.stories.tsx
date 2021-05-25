@@ -1,8 +1,7 @@
 import { Meta, Story } from "@storybook/react";
 import { Provider } from "react-redux";
 import TaskRegisterForm from "./TaskRegisterForm";
-import configureStore from "../../../states/store";
-import mock from "../../../models/Task/Mock";
+import store from "../../../states/store";
 
 export default {
   title: "atoms/TaskRegisterForm",
@@ -10,12 +9,8 @@ export default {
 } as Meta;
 
 const Template: Story = () => {
-  const state = {
-    tasks: mock.getTaskList(),
-  };
-
   return (
-    <Provider store={configureStore(state)}>
+    <Provider store={store}>
       <TaskRegisterForm />
     </Provider>
   );
