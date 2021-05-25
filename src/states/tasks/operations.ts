@@ -26,12 +26,13 @@ export const toggleStatus = (task: Task) => {
 };
 
 export const archive = (task: Task) => {
-  if (task.isArchived()) {
-    task.unarchive();
-    return actions.unarchiveTask(task.getId(), task.serialize());
-  }
   task.archive();
   return actions.archiveTask(task.getId(), task.serialize());
+};
+
+export const unarchive = (task: Task) => {
+  task.unarchive();
+  return actions.unarchiveTask(task.getId(), task.serialize());
 };
 
 export default {
@@ -39,4 +40,5 @@ export default {
   updateTitle,
   toggleStatus,
   archive,
+  unarchive,
 };
