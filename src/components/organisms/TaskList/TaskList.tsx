@@ -38,12 +38,13 @@ const TaskList: React.FC<Props> = (props) => {
   const taskList = props.tasks.map((task) => (
     <TaskListItem
       key={task.props.id}
-      id={task.props.id}
       title={task.props.title}
       completed={task.props.isCompleted}
-      onClickStatusIndicator={onClickStatusIndicator}
-      onClickArchiveButton={onClickArchiveButton}
-      onEnterTitle={onEnterTitle}
+      disabled={false}
+      buttonType="archive"
+      onClickStatus={() => onClickStatusIndicator(task.props.id)}
+      onClickButton={() => onClickArchiveButton(task.props.id)}
+      onEnterTitle={(title: string) => onEnterTitle(task.props.id, title)}
     />
   ));
 
