@@ -29,7 +29,7 @@ const Navigation: React.FC<Props> = (props) => {
 
   const miniVariantDrawer = (
     <MiniVariantDrawer open={isOpenSidebar} onClose={closeSidebar}>
-      <DrawerLinkList />
+      <DrawerLinkList shortMode={!isOpenSidebar} />
     </MiniVariantDrawer>
   );
 

@@ -4,6 +4,7 @@ import CheckBoxOutlinedIcon from "@material-ui/icons/CheckBoxOutlined";
 import styled from "styled-components";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const StyledIcon = styled(ListItemIcon)`
   &.MuiListItemIcon-root {
@@ -15,23 +16,35 @@ const StyledText = styled(ListItemText)`
   margin: 0 15px;
 `;
 
-const DrawerLinkList: React.FC = () => {
+interface Props {
+  shortMode?: boolean;
+}
+
+const DrawerLinkList: React.FC<Props> = (props) => {
+  const router = useRouter();
+  const short: boolean =
+    props.shortMode !== undefined ? props.shortMode : false;
+
   return (
     <List>
       <Link href="/" passHref>
-        <ListItem button component="a">
+        <ListItem button component="a" selected={router.pathname === "/"}>
           <StyledIcon>
             <CheckBoxOutlinedIcon />
           </StyledIcon>
-          <StyledText primary="Inbox" />
+          <StyledText primary={short ? "" : "Inbox"} />
         </ListItem>
       </Link>
       <Link href="/tasks/archived" passHref>
-        <ListItem button component="a">
+        <ListItem
+          button
+          component="a"
+          selected={router.pathname === "/tasks/archived"}
+        >
           <StyledIcon>
             <DeleteOutlineIcon />
           </StyledIcon>
-          <StyledText primary="Archive" />
+          <StyledText primary={short ? "" : "Archive"} />
         </ListItem>
       </Link>
     </List>
