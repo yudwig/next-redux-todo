@@ -1,5 +1,11 @@
 import * as React from "react";
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@material-ui/core";
 import CheckBoxOutlinedIcon from "@material-ui/icons/CheckBoxOutlined";
 import styled from "styled-components";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
@@ -18,6 +24,7 @@ const StyledText = styled(ListItemText)`
 
 interface Props {
   shortMode?: boolean;
+  onClickLink?: () => void;
 }
 
 const DrawerLinkList: React.FC<Props> = (props) => {
@@ -25,27 +32,37 @@ const DrawerLinkList: React.FC<Props> = (props) => {
   const short: boolean =
     props.shortMode !== undefined ? props.shortMode : false;
 
+  const onClickLink = () => {
+    if (props.onClickLink !== undefined) {
+      props.onClickLink();
+    }
+  };
+
   return (
     <List>
       <Link href="/" passHref>
-        <ListItem button component="a" selected={router.pathname === "/"}>
-          <StyledIcon>
-            <CheckBoxOutlinedIcon />
-          </StyledIcon>
-          <StyledText primary={short ? "" : "Inbox"} />
-        </ListItem>
+        <Box onClick={onClickLink}>
+          <ListItem button component="a" selected={router.pathname === "/"}>
+            <StyledIcon>
+              <CheckBoxOutlinedIcon />
+            </StyledIcon>
+            <StyledText primary={short ? "" : "Inbox"} />
+          </ListItem>
+        </Box>
       </Link>
       <Link href="/tasks/archived" passHref>
-        <ListItem
-          button
-          component="a"
-          selected={router.pathname === "/tasks/archived"}
-        >
-          <StyledIcon>
-            <DeleteOutlineIcon />
-          </StyledIcon>
-          <StyledText primary={short ? "" : "Archive"} />
-        </ListItem>
+        <Box onClick={onClickLink}>
+          <ListItem
+            button
+            component="a"
+            selected={router.pathname === "/tasks/archived"}
+          >
+            <StyledIcon>
+              <DeleteOutlineIcon />
+            </StyledIcon>
+            <StyledText primary={short ? "" : "Archive"} />
+          </ListItem>
+        </Box>
       </Link>
     </List>
   );

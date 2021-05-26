@@ -1,11 +1,13 @@
 import * as React from "react";
-import { useState } from "react";
 import { Box, Container, useMediaQuery, useTheme } from "@material-ui/core";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../molecules/Navbar/Navbar";
 import DrawerLinkList from "../../molecules/DrawerLinkList/DrawerLinkList";
 import MiniVariantDrawer from "../MiniVariantDrawer/MiniVariantDrawer";
 import TemporaryDrawer from "../TemporaryDrawer/TemporaryDrawer";
+import operations from "../../../states/nav/operations";
+import selectors from "../../../states/nav/selectors";
 
 const Content = styled.main`
   width: 100%;
@@ -16,36 +18,45 @@ interface Props {
 }
 
 const Navigation: React.FC<Props> = (props) => {
+  const dispatch = useDispatch();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const nav = useSelector(selectors.getNav);
 
-  const [isOpenSidebar, setSidebarState] = useState(true);
-  const closeSidebar = () => {
-    setSidebarState(false);
+  const toggleOpenDrawer = () => {
+    dispatch(operations.toggleOpenDrawer(nav.isOpenDrawer));
   };
-  const toggleSidebar = () => {
-    setSidebarState(!isOpenSidebar);
+
+  const toggleWidthDrawer = () => {
+    dispatch(operations.toggleWidthDrawer(nav.isExpandDrawer));
+  };
+
+  const closeDrawer = () => {
+    dispatch(operations.closeDrawer());
   };
 
   const miniVariantDrawer = (
-    <MiniVariantDrawer open={isOpenSidebar} onClose={closeSidebar}>
-      <DrawerLinkList shortMode={!isOpenSidebar} />
+    <MiniVariantDrawer open={nav.isExpandDrawer} onClose={toggleWidthDrawer}>
+      <DrawerLinkList shortMode={!nav.isExpandDrawer} />
     </MiniVariantDrawer>
   );
 
   const temporaryDrawer = (
     <TemporaryDrawer
-      open={isOpenSidebar}
-      onClose={closeSidebar}
-      onClickCloseButton={closeSidebar}
+      open={nav.isOpenDrawer}
+      onClose={closeDrawer}
+      onClickCloseButton={closeDrawer}
     >
-      <DrawerLinkList />
+      <DrawerLinkList onClickLink={closeDrawer} />
     </TemporaryDrawer>
   );
 
   return (
     <>
-      <Navbar title={props.title} onToggleDrawer={toggleSidebar} />
+      <Navbar
+        title={props.title}
+        onToggleDrawer={matches ? toggleWidthDrawer : toggleOpenDrawer}
+      />
       <Box display="flex">
         {matches ? miniVariantDrawer : temporaryDrawer}
         <Content>
