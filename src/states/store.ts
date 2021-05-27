@@ -7,6 +7,7 @@ const preloadedState = {
   tasks: mock.getSerializedTaskList(),
   nav: {
     isOpenDrawer: false,
+    isExpandDrawer: true,
   },
 };
 
