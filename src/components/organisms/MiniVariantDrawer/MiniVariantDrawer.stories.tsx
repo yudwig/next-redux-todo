@@ -17,11 +17,9 @@ export default {
 
 const Template: Story = (args) => {
   return (
-    <>
-      <MiniVariantDrawer {...args}>
-        <DrawerLinkList />
-      </MiniVariantDrawer>
-    </>
+    <MiniVariantDrawer open={args.open}>
+      <DrawerLinkList shortMode={!args.open} />
+    </MiniVariantDrawer>
   );
 };
 

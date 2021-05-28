@@ -28,7 +28,7 @@ interface Props {
 }
 
 const DrawerLinkList: React.FC<Props> = (props) => {
-  const router = useRouter();
+  const router = useRouter() || { pathname: "" };
   const short: boolean =
     props.shortMode !== undefined ? props.shortMode : false;
 

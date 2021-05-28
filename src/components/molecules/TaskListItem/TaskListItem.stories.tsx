@@ -11,16 +11,35 @@ export default {
         type: "text",
       },
     },
-    status: {
+    completed: {
       control: {
         type: "boolean",
+      },
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
+    buttonType: {
+      control: {
+        type: "select",
+        labels: {
+          archive: "archive",
+          unarchive: "unarchive",
+        },
       },
     },
   },
 } as Meta;
 
 const Template: Story = (args) => (
-  <TaskListItem title={args.title} status={args.status} />
+  <TaskListItem
+    title={args.title}
+    completed={args.completed}
+    disabled={args.disabled}
+    buttonType={args.buttonType}
+  />
 );
 
 export const Active = Template.bind({});

@@ -1,8 +1,7 @@
 import { Meta, Story } from "@storybook/react";
-import { Provider } from "react-redux";
+import { useSelector } from "react-redux";
 import TaskList from "./TaskList";
-import configureStore from "../../../states/store";
-import mock from "../../../models/Task/Mock";
+import selectors from "../../../states/tasks/selectors";
 
 export default {
   title: "organisms/TaskList",
@@ -10,15 +9,8 @@ export default {
 } as Meta;
 
 const Template: Story = () => {
-  const state = {
-    tasks: mock.getTaskList(),
-  };
-
-  return (
-    <Provider store={configureStore(state)}>
-      <TaskList />
-    </Provider>
-  );
+  const tasks = useSelector(selectors.getInboxTasks) || [];
+  return <TaskList tasks={tasks} />;
 };
 
 export const index = Template;
